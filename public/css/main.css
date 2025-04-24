@@ -236,14 +236,14 @@ h6 {
 --------------------------------------------------------------*/
 .header {
     color: var(--default-color);
-    background-color: rgba(153, 167, 213, 1);
+    background-color: #918c89;
     transition: all 0.5s;
     z-index: 997;
     box-shadow: 0px 0 18px rgba(84, 81, 250, 0.24);
 }
 
 .header .topbar {
-    background-color: #42a1ff;
+    background-color: #b5d1ed;
     color: rgba(67, 79, 252, 0.363);
     height: 50px;
     padding: 0;
@@ -273,8 +273,8 @@ h6 {
 
 .header .cta-btn,
 .header .cta-btn:focus {
-    color: #000;
-    background: rgb(66, 161, 255);
+    color: #fff;
+    background: #1a62a9;
     font-size: 14px;
     padding: 8px 20px;
     margin: 0 5px 0 30px;
@@ -284,8 +284,8 @@ h6 {
 
 .header .cta-btn:hover,
 .header .cta-btn:focus:hover {
-    color: rgb(67, 71, 75);
-    background: color-mix(in srgb, rgb(107, 171, 235), transparent 15%);
+    color: #000;
+    background: color-mix(in srgb, #2b7a77, transparent 15%);
 }
 
 /*--------------------------------------------------------------
@@ -311,7 +311,7 @@ h6 {
 
     .navmenu a,
     .navmenu a:focus {
-        color: rgb(0, 0, 0);
+        color: #000;
         padding: 18px 15px;
         font-size: 13px;
         font-family: var(--nav-font);
@@ -536,7 +536,7 @@ h6 {
 --------------------------------------------------------------*/
 .footer {
     color: rgba(0, 0, 0, 1);
-    background-color: rgba(7, 130, 255, 0.74);
+    background-color: #b5d1ed;
     font-size: 14px;
     position: relative;
 }

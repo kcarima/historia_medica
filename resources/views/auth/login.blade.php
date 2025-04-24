@@ -38,17 +38,13 @@
             </x-primary-button>
         </div>
         <br> <hr>
-        <div class="login-social-link centered">
-            <p>o puedes iniciar sesión a través de tu red social</p>
-                <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-        </div>
+
         <div class="centered">
-            <div class="centered">
+          {{--  <div class="centered">
                 ¿Aún no tienes una cuenta?<br/>
                 <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"  href="{{ route('register') }}">
-                    {{ __('Crea una cuenta ') }}
-                </a>
+                    { { __('Crea una cuenta ') }}
+                </a>  --}}
             </div>
             <div class="mt-4 centered">
                 @if (Route::has('password.request'))

@@ -26,7 +26,7 @@ a:focus {
     outline: none;
 }
 ::selection {
-    background: #68dff0;
+    background: #bcebed;
     color: #fff;
 }
 ::-moz-selection {
@@ -1919,7 +1919,7 @@ label {
     margin: 0;
     padding: 25px 20px;
     text-align: center;
-    background: #68dff0;
+    background: #1e736c;
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
@@ -1986,7 +1986,7 @@ label {
 .btn-facebook:active,
 .btn-facebook.active,
 .open .dropdown-toggle.btn-facebook {
-    color: #fff;
+    color: #000;
     background-color: #2775e2;
     border-color: #2775e2;
 }

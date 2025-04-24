@@ -20,7 +20,7 @@
             <li><a href="#">Citas</a></li>
             <li><a href="#">Especialidades</a></li>
             <li><a href="#">Doctores</a></li>
-            <li><a href="{{-- route('historia') --}}#">Historias</a></li>
+            <li><a href="{{-- route('historia') --}}#">Pacientes</a></li>
             <li class="dropdown"><a href="#"><span>Reportes</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                     <ol>
