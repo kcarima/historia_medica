@@ -40,11 +40,11 @@
         <br> <hr>
 
         <div class="centered">
-          {{--  <div class="centered">
+           <div class="centered">
                 ¿Aún no tienes una cuenta?<br/>
                 <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"  href="{{ route('register') }}">
-                    { { __('Crea una cuenta ') }}
-                </a>  --}}
+                    {{ __('Crea una cuenta ') }}
+                </a>
             </div>
             <div class="mt-4 centered">
                 @if (Route::has('password.request'))
