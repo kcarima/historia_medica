@@ -1,0 +1,135 @@
+
+
+/* Grid para las dos secciones */
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 50px;
+}
+
+/* Subtítulos */
+.minor-section > h5 {
+    font-family: 'Georgia', serif;
+    font-size: 1.4rem;
+    color: #3a7d44;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #a3c293;
+    padding-bottom: 6px;
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Etiquetas */
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Textareas */
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus en textarea */
+.form-group textarea:focus {
+    border-color: #2E8B57;
+    outline: none;
+}
+
+/* Responsive: en pantallas pequeñas una columna */
+@media (max-width: 768px) {
+    .sections-grid {
+        grid-template-columns: 1fr;
+        gap: 30px 0;
+    }
+}
+h3 {
+    color: #28a745;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 5px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    margin: 20px;
+    color: #333;
+  }
+/* Estilos para el contenedor del menú centrado */
+.menu-container-center {
+    display: flex;
+    justify-content: center; /* Centra el menú horizontalmente */
+    padding: 15px;
+    background-color: #f8f9fa; /* Fondo gris claro */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilos para la lista del menú */
+.menu-center {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinea los items horizontalmente */
+    border-radius: 6px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen */
+    background-color: #fff; /* Fondo blanco para los items */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra ligera para los items */
+}
+
+/* Estilos para los items de la lista */
+.menu-center li {
+    margin-left: 15px; /* Espacio entre items */
+}
+
+.menu-center li:first-child {
+    margin-left: 0; /* Elimina el margen del primer item */
+}
+
+/* Estilos para los enlaces del menú */
+.menu-center a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555; /* Color de texto gris */
+    font-size: 14px;
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Estilos para el hover de los enlaces */
+.menu-center a:hover {
+    background-color: #007bff; /* Fondo azul al pasar el ratón */
+    color: white; /* Texto blanco al pasar el ratón */
+}
+
+/* Estilos para accesibilidad (atributos role y aria-label) - Opcional */
+.menu-center[role="menubar"] {
+    /* Estilos adicionales para el menú como barra de menú */
+}
+
+.menu-center[aria-label="Menú secundario"] {
+    /* Estilos específicos para el menú secundario */
+}
+
+.menu-center li[role="none"] {
+    /* Eliminar cualquier estilo de rol predeterminado de la lista */
+}
+
+.menu-center a[role="menuitem"] {
+    /* Estilos específicos para los elementos del menú */
+}

@@ -1,0 +1,76 @@
+.mi-contenedor {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 25px 35px;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+}
+
+.mi-contenedor h2,
+.mi-contenedor h5 {
+    color: #0d6efd; /* Azul Bootstrap */
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.mi-contenedor label {
+    font-weight: 600;
+    color: #444;
+}
+
+.mi-contenedor .form-control,
+.mi-contenedor .form-select,
+.mi-contenedor textarea {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mi-contenedor .form-control:focus,
+.mi-contenedor .form-select:focus,
+.mi-contenedor textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+    outline: none;
+}
+
+.mi-contenedor .form-check-label {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.mi-contenedor .form-check-input {
+    transform: scale(1.2);
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.mi-contenedor textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.mi-contenedor button[type="submit"] {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    font-weight: 700;
+    padding: 12px 0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.mi-contenedor button[type="submit"]:hover {
+    background-color: #084298;
+    border-color: #084298;
+}
+
+@media (max-width: 100px) {
+    .mi-contenedor {
+        padding: 20px 15px;
+        max-width: 100%;
+        margin: 15px ;
+    }
+}

@@ -1,0 +1,107 @@
+.container-anamnesis h3#anamnesis {
+    color: #2E8B57; /* verde clásico */
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 3px solid #2E8B57;
+    padding-bottom: 8px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.container-anamnesis h4 {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: #3a7d44;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #a3c293;
+    padding-bottom: 6px;
+}
+
+.container-anamnesis .form-group {
+    margin-bottom: 25px;
+}
+
+.container-anamnesis label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.container-anamnesis textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.container-anamnesis textarea:focus {
+    border-color: #2E8B57;
+    outline: none;
+}
+h3 {
+    color: #28a745;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 5px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    margin: 20px;
+    color: #333;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap; /* permite salto de línea */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu li {
+    flex: 0 0 22%; /* ancho fijo para 4 columnas con espacio */
+    max-width: 22%;
+    text-align: center;
+  }
+
+  .menu li a {
+    display: block;
+    padding: 8px 10px;
+    background: #4a90e2;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu li a:hover,
+  .menu li a:focus {
+    background-color: #357ABD;
+    outline: none;
+  }
+
+  /* Responsive para móviles: 1 columna */
+  @media (max-width: 600px) {
+    .menu li {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }

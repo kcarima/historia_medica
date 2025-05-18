@@ -1,0 +1,8 @@
+h1.ancho {
+  font-family: 'Roboto Condensed', sans-serif; /* Ejemplo de una fuente que suele tener variantes */
+  font-stretch: expanded; /* O 'extra-expanded', 'ultra-expanded' según el efecto deseado */
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}

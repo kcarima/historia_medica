@@ -15,13 +15,15 @@
         <!-- Contenedor con scroll horizontal -->
         <div class="form-section">
           <!-- Primera fila de campos: Género, Primer Apellido, Segundo Apellido, Nombre, Cédula, Teléfono Local -->
-         <div class="mb-3">
-    <label for="genero" class="form-label">Género</label>
-    <select class="form-select form-select-sm" id="genero" name="genero">
-        <option value="Masculino" selected>Masculino</option>
-        <option value="Femenino">Femenino</option>
-    </select>
-</div>
+          <div>
+            <label class="form-label">Género</label>
+            <div>
+              <input type="radio" class="btn-check" name="genero" id="hombre" autocomplete="off" checked />
+              <label class="btn btn-outline-primary btn-sm" for="hombre">Masculino</label>
+              <input type="radio" class="btn-check" name="genero" id="mujer" autocomplete="off" />
+              <label class="btn btn-outline-primary btn-sm" for="mujer">Femenino</label>
+            </div>
+          </div>
           <div>
             <label class="form-label">Primer Apellido</label>
             <input type="text" class="form-control form-control-sm" value="" />
@@ -88,22 +90,22 @@
             <label class="form-label">Parroquia</label>
             <input type="text" class="form-control form-control-sm" value="" />
           </div>
-            </div>
+          <!-- Espacio vacío para alinear -->
+          <div style="min-width: 250px;"></div>
+          <div style="min-width: 250px;"></div>
+        </div>
+      </form>
+    </div>
+  </div>
           <div class="col-12 text-end">
-            <button type="submit" class="btn btn-danger">Volver</button>
             <button type="submit" class="btn btn-primary">Guardar</button>
-
-
             <button type="button" class="btn btn-primary me-2" onclick="window.location.href='{{ route('pacientes.historia') }}'">
                 Crear Historia
             </button>
 
+                    </div>
 
-      </form>
-    </div>
-
-
-
+                     /div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

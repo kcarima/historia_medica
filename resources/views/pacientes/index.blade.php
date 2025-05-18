@@ -1,61 +1,78 @@
-@extends('layouts.app')
+<x-app-layout>
+    @section('contenido')
 
-@section('title', 'Pacientes')
 
-@section('content')
 
-@if (Session::has('message'))
+    <head>
+        <title>Registro de Historia Médica</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+
+    </head>
+
+
+{{-- @if (Session::has('message'))
 <div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
+@endif --}}
 <div class="container">
-    <table id="tablagenerica" class="table table-striped table-bordered display nowrap">
-        <thead class="">
-            <tr>
-                @foreach($headers as $header)
-                    <td>{{ $header }}</td>
-                @endforeach
 
-                @if (Auth::user()->hasRole('admin') OR Auth::user()->hasRole('secretario') )
-                <td></td>
-                <td></td>
-                @endif
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($clientes as $key => $value)
-            <tr>
-                <td>{{ $value->cif }}</td>
-                <td>{{ $value->razonsocial }}</td>
-                <td>{{ $value->fechainiciocontrato }}</td>
-                <td>{{ $value->fechafincontrato }}</td>
-                <td>{{ $value->numeroreconocimientoscontratados }}</td>
-                <td>{{ $value->numeroreconocimientosutilizados }}</td>
-                @if ($value->activo)
-                <td><input type="checkbox" value="{{ $value->activo }}" readonly ="true" checked /></td>
-                @else
-                <td><input type="checkbox" value="{{ $value->activo }}" readonly ="true" /></td>
-                @endif
+    <div class="top-bar">
+        <a href="{{ route('pacientes.create') }}" class="btn-nuevo">
+         <span class="icon">+</span> Nuevo Paciente
+        </a>
+        <button class="btn-action btn-refresh" title="Recargar"></button>
+        <button class="btn-action btn-search" title="Buscar"></button>
+        <button class="btn-action btn-print" title="Imprimir"></button>
 
-                @if (Auth::user()->hasRole('admin') OR Auth::user()->hasRole('secretario') )
-                <td>
-                    <div class="btn-group-horizontal">
-                        <a class="   " href="{{ URL::to('clientes/' . $value->id) }}"><i class="fa fa-info-circle"></i></a>
-                        <a class="   " href="{{ URL::to('clientes/' . $value->id . '/edit') }}"><i class="fa fa-pencil-square-o"></i></a>
-                        <a class="   " href="{{ URL::to('clientes/' . $value->id . '/pdf') }}"><i class="fa fa-file-pdf-o"></i></a>
-                    </div>
-                </td>
-                <td>
-                    {{ Form::open(array('url' => 'clientes/' . $value->id, 'class' => '')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Borrar', array('class' => 'btn btn-outline-danger btn-sm btn-block' )) }}
-<!--                           {{ Form::button('<i class="fa fa-trash  fa-2x"></i>', ['type' => 'submit', 'class' => ''] )  }}-->
-                    {{ Form::close() }}
-                </td>
-                @endif
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-</div>
+       </div>
+       <div class="filters">
+
+        <div class="filter-group">
+         <input type="text" placeholder="Hist. Clínic..." />
+         <button class="filter-search"></button>
+        </div>
+       </div>
+       <div class="table-container">
+        <div class="table-header">
+         Visibilidad <a href="#">todos los pacientes</a> | 1 - 3 de 3
+        </div>
+        <table>
+         <thead>
+          <tr>
+           <th></th>
+           <th>Apellidos y Nombre</th>
+           <th>Nacimiento</th>
+           <th>Hist. Clín.</th>
+           <th>Teléfono</th>
+           <th>Móvil</th>
+           <th>Dirección</th>
+
+          </tr>
+         </thead>
+         <tbody>
+            @foreach($pacientes as $key => $value)
+                <tr>  {{-- { { route(paciente.edit,'id') }} --}}
+                    <td><a class="edit-icon" href=""></a></td>
+                    <@php
+                        $nombre=$value->primer_apellido." ".$value->segundo_apellido." ".$value->nombre;
+                    @endphp>
+
+                    <td>{{ $nombre }}</td>
+                    <td>{{ $value->fecha_nacimiento}}</td>
+                    <td>{{ $value->historia}}</td>
+                    <td>{{ $value->telefono_local}}</td>
+                    <td>{{ $value->celular}}</td>
+                     <td>{{ $value->direccion}}</td>
+
+
+                    <td></td>
+                </tr>
+          @endforeach
+
+         </tbody>
+        </table>
+       </div>
+
+
 @endsection
+</x-app-layout>

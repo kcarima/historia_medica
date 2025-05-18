@@ -1,0 +1,136 @@
+body {
+    background-color: #f8f9fa;
+    padding-top: 2rem;
+}
+.contenedor-principal {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+.titulo-formulario {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+.linea-decorativa {
+    height: 4px;
+    background: #0d6efd;
+    width: 60px;
+    margin-bottom: 1rem;
+}
+.form-section {
+    margin-bottom: 2rem;
+}
+.btn.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+.btn.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+} .toolbar {
+  display: inline-flex; /* Para alinear los botones horizontalmente */
+  align-items: center; /* Para alinear verticalmente los elementos */
+  gap: 8px; /* Espacio entre los botones */
+  padding: 10px; /* Espacio alrededor del toolbar */
+  border-radius: 6px; /* Bordes ligeramente redondeados */
+  background-color: #f8f9fa; /* Un fondo muy claro */
+  border: 1px solid #e3e5e8; /* Borde sutil */
+ }
+   .form-section {
+      display: flex;
+
+      gap: 1rem;
+      white-space: nowrap;
+      padding-bottom: 1rem;
+    }
+    .form-section > div {
+
+      min-width: 190px;
+    }
+    /* Para que las filas internas tengan separación vertical */
+    .form-row {
+      margin-bottom: 1rem;
+    }
+
+ .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+ }
+
+ .button-primary {
+  background-color: #3498db; /* Azul */
+  color: white;
+ }
+
+ .button-primary:hover {
+  background-color: #2980b9;
+ }
+
+ .button-secondary {
+  background-color: white;
+  color: #555;
+  border: 1px solid #ccc;
+ }
+
+ .button-secondary:hover {
+  background-color: #f0f0f0;
+ }
+
+ .button-accent {
+  background-color: #2ecc71; /* Verde azulado */
+  color: white;
+ }
+
+ .button-accent:hover {
+  background-color: #27ae60;
+ }
+
+ .button-icon {
+  width: 32px; /* Ancho fijo para botones de icono */
+  height: 32px; /* Alto fijo para botones de icono */
+  padding: 0;
+  border-radius: 50%; /* Forma circular */
+ }
+
+ .icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.7;
+ }
+
+ .plus-icon {
+  /* Puedes usar una imagen SVG o un carácter Unicode */
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 24 24" fill="%23555" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/%3E%3C/svg%3E');
+ }
+
+ .trash-icon {
+  /* Puedes usar una imagen SVG o un carácter Unicode */
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 24 24" fill="%23555" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/%3E%3C/svg%3E');
+ }
+
+ .dots-icon {
+  /* Puedes usar una imagen SVG o un carácter Unicode */
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 24 24" fill="%23fff" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="7" cy="12" r="1.5"/%3E%3Ccircle cx="12" cy="12" r="1.5"/%3E%3Ccircle cx="17" cy="12" r="1.5"/%3E%3C/svg%3E');
+  opacity: 1; /* Color blanco para que se vea en el botón azul */
+ }
+
+ .button-accent .dots-icon {
+  fill: white;
+  opacity: 1;
+ }

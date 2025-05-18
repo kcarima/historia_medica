@@ -13,14 +13,22 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre");
-            $table->string("ci");
-            $table->string("nacionalidad")->nullable();
-            $table->string("direccion")->nullable();
-            $table->string("telefono")->nullable();
-            $table->string("lugar_nac")->nullable();
-            $table->date("fecha_nac");
-            $table->boolean("status")->default(TRUE);
+            $table->enum('genero', ['Masculino', 'Femenino'])->default('Masculino');
+            $table->string('primer_apellido', 50)->nullable();
+            $table->string('segundo_apellido', 50)->nullable();
+            $table->string('grupo_sanguineo', 5)->nullable();
+            $table->string('nombre', 50);
+            $table->string('estado_civil', 20)->nullable();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->string('cedula', 15)->nullable();
+            $table->string('correo_electronico', 100)->nullable();
+            $table->string('telefono_local', 20)->nullable();
+            $table->string('celular', 15)->nullable();
+            $table->string('direccion', 100)->nullable();
+            $table->string('municipio', 50)->nullable();
+            $table->string('parroquia', 50)->nullable();
+            $table->string('historia', 10)->unique();
+            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

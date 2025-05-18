@@ -13,10 +13,23 @@ return new class extends Migration
     {
         Schema::create('familiar', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre_razon");
-            $table->string("direccion")->nullable();
-            $table->string("telefono")->nullable();
-            $table->string("parentesco")->nullable();
+
+            // Enfermedades de los padres almacenadas como texto (JSON o texto plano)
+            $table->json('enfermedades_padres')->nullable();
+
+            // Otra enfermedad especificada
+            $table->string('otra_enfermedad_padres')->nullable();
+
+            // ¿Algún hermano presenta enfermedades hereditarias?
+            $table->enum('hermanos', ['Sí', 'No'])->default('No');
+
+            // Detalle si aplica
+            $table->string('detalle_hermanos')->nullable();
+
+            // Observaciones adicionales
+            $table->text('observaciones')->nullable();
+            $table->string('historia',null);
+             $table->foreign('historia')->references('historia')->on('pacientes');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('falimiar');
+        Schema::dropIfExists('familiar');
     }
 };

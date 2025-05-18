@@ -1,0 +1,332 @@
+/* estilos_historia_medica.css */
+
+body
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 900px;
+}
+header {
+  margin-bottom: 30px; /* Ajusta el valor a tu gusto */
+}
+h3 {
+    color: #28a745;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 5px;
+}
+
+h4 {
+    color: #17a2b8;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.minor-section {
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.minor-section h5 {
+    color: #6c757d;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.form-group input[type="text"],
+.form-group input[type="datetime-local"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: calc(100% - 12px);
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+.button-group {
+    margin-top: 25px;
+    text-align: left; /* Alinea los botones a la izquierda */
+}
+
+.button-group button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+    margin-right: 10px; /* Espacio entre los botones */
+}
+
+.button-group button:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último botón */
+}
+
+.button-group button:hover {
+    opacity: 0.8;
+}
+
+.button-group button[type="submit"] {
+    background-color: #28a745; /* Verde para "Guardar" */
+    color: white;
+}
+
+.button-group button.btn-primary {
+    background-color: #007bff; /* Azul para "Imprimir Tratamiento" */
+    color: white;
+}
+
+.button-group button.btn-warning {
+    background-color: #ffc107; /* Amarillo para "Solicitud de Laboratorio" */
+    color: #212529; /* Texto oscuro para mejor contraste */
+}
+
+/* Media query para pantallas más pequeñas (opcional) */
+@media (max-width: 768px) {
+    .button-group {
+        text-align: center; /* Centra los botones en pantallas pequeñas */
+    }
+
+    .button-group button {
+        margin-bottom: 10px; /* Espacio inferior entre botones en pantallas pequeñas */
+        margin-right: 0; /* Elimina el margen derecho */
+        width: 100%; /* Ocupan todo el ancho disponible */
+        box-sizing: border-box; /* Incluye el padding y el borde en el ancho */
+    }
+}
+
+.button-group button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos específicos para ciertas secciones o elementos */
+#fecha_atencion {
+    max-width: 300px;
+}
+
+.minor-section input[type="text"],
+.minor-section input[type="number"] {
+    max-width: 200px;
+}
+
+#diagnostico {
+    max-width: 300px;
+}
+
+#curvas_crecimiento {
+    width: 100%;
+    max-width: none; /* Para que ocupe todo el ancho disponible */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .form-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .minor-section {
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="datetime-local"],
+    .form-group input[type="number"],
+    .form-group textarea {
+        font-size: 14px;
+    }
+
+    .button-group button[type="submit"] {
+        font-size: 16px;
+    }
+}
+.submenu-lateral {
+    padding: 15px;
+    background-color: #f8f9fa; /* Un color de fondo claro para diferenciarlo */
+    border-left: 1px solid #dee2e6; /* Una línea divisoria */
+    border-radius: 0 .25rem .25rem 0; /* Redondear solo las esquinas derechas */
+}
+
+.submenu-lateral h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #007bff; /* Un color distintivo para el título */
+}
+
+.submenu-lateral ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.submenu-lateral ul li {
+    margin-bottom: 8px;
+}
+
+.submenu-lateral ul li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: background-color 0.3s ease;
+}
+
+.submenu-lateral ul li a:hover {
+    background-color: #e9ecef;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    margin: 20px;
+    color: #333;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap; /* permite salto de línea */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .menu li {
+    flex: 0 0 22%; /* ancho fijo para 4 columnas con espacio */
+    max-width: 22%;
+    text-align: center;
+  }
+
+  .menu li a {
+    display: block;
+    padding: 8px 10px;
+    background: #4a90e2;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu li a:hover,
+  .menu li a:focus {
+    background-color: #357ABD;
+    outline: none;
+  }
+
+/* Estilos para el contenedor del menú centrado */
+.menu-container-center {
+    display: flex;
+    justify-content: center; /* Centra el menú horizontalmente */
+    padding: 15px;
+    background-color: #f8f9fa; /* Fondo gris claro */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilos para la lista del menú */
+.menu-center {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinea los items horizontalmente */
+    border-radius: 6px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen */
+    background-color: #fff; /* Fondo blanco para los items */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra ligera para los items */
+}
+
+/* Estilos para los items de la lista */
+.menu-center li {
+    margin-left: 15px; /* Espacio entre items */
+}
+
+.menu-center li:first-child {
+    margin-left: 0; /* Elimina el margen del primer item */
+}
+
+/* Estilos para los enlaces del menú */
+.menu-center a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555; /* Color de texto gris */
+    font-size: 14px;
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+.contenedor-principal {
+  display: flex;               /* Contenedor flex horizontal */
+  gap: 20px;                  /* Espacio entre columnas */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-direction: row;        /* Orden natural: menú a la izquierda, contenido a la derecha */
+  align-items: flex-start;    /* Alinea verticalmente al inicio */
+}
+.contenedor-principal {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  /* d-flex y gap se aplican con Bootstrap */
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.menu-izquierda {
+  width: 220px; /* ancho fijo para menú lateral */
+}
+
+.menu-izquierda a {
+  text-align: center;
+}
+
+/* Responsive: apilar verticalmente en pantallas pequeñas */
+@media (max-width: 768px) {
+  .contenedor-principal {
+    flex-direction: column !important;
+  }
+  .menu-izquierda {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+}
+

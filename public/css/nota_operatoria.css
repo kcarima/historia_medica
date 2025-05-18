@@ -1,0 +1,50 @@
+.contenedor-nota {
+    width: 800px; /* ancho fijo grande */
+    max-width: 90%; /* responsive para pantallas pequeñas */
+    margin: 70px auto; /* centra horizontalmente y separa vertical */
+    padding: 30px 40px; /* espacio interno */
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-sizing: border-box; /* incluye padding en el ancho total */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.campo-nota {
+    width: 100%; /* ocupa todo el ancho del contenedor */
+    height: 300px;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: horizontal;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    text-align: justify; /* intento de justificar texto */
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+.btn-guardar {
+    display: block;
+    width: 20%;
+    padding: 12px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 0 auto; /* 0 arriba/abajo, auto izquierda/derecha */
+}
+
+.btn-guardar:hover {
+    background: #0056b3;
+}

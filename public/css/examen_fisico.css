@@ -1,0 +1,156 @@
+
+
+  h3 {
+    color: #28a745;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 5px;
+}
+
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group.full-width {
+    grid-column: 1 / -1; /* Ocupa ambas columnas */
+  }
+
+  label {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    border-color: #2E8B57;
+    outline: none;
+  }
+
+  .button-group {
+    text-align: right;
+  }
+
+  button#btnSiguiente {
+    background-color: #2E8B57;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button#btnSiguiente:hover {
+    background-color: #246b43;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    .form-group.full-width {
+      grid-column: auto;
+    }
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9fafb;
+    margin: 20px;
+    color: #333;
+  }
+
+/* Estilos para el contenedor del menú centrado */
+.menu-container-center {
+    display: flex;
+    justify-content: center; /* Centra el menú horizontalmente */
+    padding: 15px;
+    background-color: #f8f9fa; /* Fondo gris claro */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilos para la lista del menú */
+.menu-center {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinea los items horizontalmente */
+    border-radius: 6px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen */
+    background-color: #fff; /* Fondo blanco para los items */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra ligera para los items */
+}
+
+/* Estilos para los items de la lista */
+.menu-center li {
+    margin-left: 15px; /* Espacio entre items */
+}
+
+.menu-center li:first-child {
+    margin-left: 0; /* Elimina el margen del primer item */
+}
+
+/* Estilos para los enlaces del menú */
+.menu-center a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555; /* Color de texto gris */
+    font-size: 14px;
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+/* Estilos para el hover de los enlaces */
+.menu-center a:hover {
+    background-color: #007bff; /* Fondo azul al pasar el ratón */
+    color: white; /* Texto blanco al pasar el ratón */
+}
+
+/* Estilos para accesibilidad (atributos role y aria-label) - Opcional */
+.menu-center[role="menubar"] {
+    /* Estilos adicionales para el menú como barra de menú */
+}
+
+.menu-center[aria-label="Menú secundario"] {
+    /* Estilos específicos para el menú secundario */
+}
+
+.menu-center li[role="none"] {
+    /* Eliminar cualquier estilo de rol predeterminado de la lista */
+}
+
+.menu-center a[role="menuitem"] {
+    /* Estilos específicos para los elementos del menú */
+}
+
+header {
+    margin-bottom: 30px; /* Ajusta el valor a tu gusto */
+  }

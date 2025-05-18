@@ -1,0 +1,83 @@
+/* Tamaño carta: 8.5in x 11in */
+@page {
+    size: 8.5in 11in;
+    margin: 2cm;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2cm;
+    background: white;
+    color: #000;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 0.2em;
+}
+
+h1 {
+    font-size: 24pt;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18pt;
+    margin-top: 0;
+    color: #555;
+}
+
+.header {
+    border-bottom: 2px solid #000;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+}
+
+.datos-paciente {
+    margin-bottom: 1.5em;
+}
+
+.datos-paciente table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12pt;
+}
+
+.datos-paciente th, .datos-paciente td {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.seccion {
+    margin-bottom: 1.5em;
+}
+
+.seccion h3 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.2em;
+    margin-bottom: 0.5em;
+    font-size: 14pt;
+    color: #333;
+}
+
+.contenido {
+    font-size: 12pt;
+    line-height: 1.4;
+}
+
+.firma {
+    margin-top: 3em;
+}
+
+/* Para impresión */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        padding: 0;
+    }
+}
