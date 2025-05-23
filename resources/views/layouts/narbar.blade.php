@@ -2,7 +2,7 @@
     <div class="topbar d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="d-none d-md-flex align-items-center">
-            <a href="{{ route('principal') }}" class="logo d-flex align-items-center me-auto">
+            <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center me-auto">
                 <img src="{{asset('assets/img/logo.png')}}">
                 <h1 class="sitename">Sistema de Citas de Registro Médico</h1>
             </a>
