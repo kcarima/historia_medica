@@ -10,14 +10,14 @@ class PacienteController extends Controller
     // Mostrar listado de pacientes
     public function index()
     {
-        $pacientes = Paciente::all();
-        return view('pacientes.index.index', compact('pacientes'));
+        $pacientes = Paciente::all(); //->orderBy('historia', 'desc');
+        return view('pacientes.index', compact('pacientes'));
     }
 
     // Mostrar formulario para crear paciente
    public function create()
     {
-      return view('pacientes.create.create');
+      return view('pacientes.create');
     }
 
 
@@ -51,7 +51,7 @@ class PacienteController extends Controller
         ['historia' => str_pad($nuevoNumeroHistoria, 6, '0', STR_PAD_LEFT)] // ejemplo: 000001
     ));
 
-    return redirect()->route('pacientes.create')->with('success', 'Paciente guardado correctamente con historia #' . $paciente->historia);
+    return redirect()->route('pacientes.edit',$paciente->historia)->with('success', 'Paciente guardado correctamente con historia #' . $paciente->historia);
 }
 
     // Mostrar detalle del paciente
@@ -121,7 +121,7 @@ public function editPorHistoria($historia)
     $paciente = Paciente::where('historia', $historia)->firstOrFail();
 
     // Cargar la vista ubicada en pacientes/create/edit.blade.php
-    return view('pacientes.create.edit', compact('paciente'));
+    return view('pacientes.edit', compact('paciente'));
 }
 public function guardarHistoriaMedica(Request $request) {
     // Lógica para guardar la historia médica

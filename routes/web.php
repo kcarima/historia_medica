@@ -45,9 +45,10 @@ Route::get('/pacientes/{id}/edit', [PacienteController::class, 'edit'])->name('p
 Route::get('/pacientes/edit/{historia}', [PacienteController::class, 'editPorHistoria'])->name('pacientes.editPorHistoria');
 Route::put('/pacientes/{id}', [PacienteController::class, 'update'])->name('pacientes.update');
 Route::post('/pacientes/guardar_historia_medica', [PacienteController::class, 'guardarHistoriaMedica']);
-Route::get('/historias/editar/{numero_historia}', [HistoriaController::class, 'editByNumeroHistoria'])->name('historias.editByNumeroHistoria');
-Route::put('/historias/actualizar/{numero_historia}', [HistoriaController::class, 'updateByNumeroHistoria'])->name('historias.updateByNumeroHistoria');
-Route::resource('historias', HistoriaController::class);
+Route::get('/pacientes/historia/{historia}', [HistoriaController::class, 'create'])->name('historia.create');
+Route::get('/historias/editar/{historia}', [HistoriaController::class, 'editByNumeroHistoria'])->name('historias.edit');
+Route::put('/historias/actualizar/{historia}', [HistoriaController::class, 'updateByNumeroHistoria'])->name('historias.updateByNumeroHistoria');
+//Route::resource('historias', HistoriaController::class)->names('historia');
 
 });
 require __DIR__.'/auth.php';

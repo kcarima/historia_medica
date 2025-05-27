@@ -35,7 +35,6 @@
     <!-- Formulario para editar paciente -->
     <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
         @csrf
-        @method('PUT')
 
         <!-- Campo oculto para enviar historia y validar -->
         <input type="hidden" name="historia" value="{{ old('historia', $paciente->historia) }}">
@@ -145,7 +144,10 @@
 
         <div class="d-flex justify-content-end gap-2">
             <a href="{{ route('pacientes.index') }}" class="btn btn-danger">Volver</a>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='{{ route('historia.create',$paciente->historia) }}'">
+                Crear Historia
+            </button>
         </div>
     </form>
 </div>

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Historia;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
 class HistoriaController extends Controller
 {
     // Mostrar formulario de edición por id
-    public function edit($id)
+    public function edit($historia)
     {
-        $historia = Historia::findOrFail($id);
-        return view('historias.edit', compact('historia'));
+        $historia = Historia::findOrFail('historia',$historia);
+        return view('pacientes.historia.edit', compact(var_name: 'historia'));
     }
 
     // Actualizar historia
@@ -30,11 +31,12 @@ class HistoriaController extends Controller
     }
 
     // Mostrar formulario de creación con número de historia (pasado como parámetro)
-    public function create(Request $request)
+    public function create($historia)
     {
         // Puedes pasar el número de historia por query string o por parámetro
-        $numeroHistoria = $request->query('historia', null);
-        return view('historias.create', compact('numeroHistoria'));
+        $paciente = Paciente::where('historia', $historia)->firstOrFail();
+        return view('pacientes.historia.create', compact('paciente'));
+        //return view('pacientes.historia.create'); //, compact(var_name: $historia));
     }
 
     // Guardar nueva historia

@@ -25,7 +25,7 @@
                 <textarea class="form-control" id="motivo_consulta" name="motivo_consulta" rows="3" required>{{ $historia->motivo_consulta }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
-            <a href="{{ route('historias.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('pacientes.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 @endsection
