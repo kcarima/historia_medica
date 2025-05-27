@@ -48,6 +48,6 @@ Route::post('/pacientes/guardar_historia_medica', [PacienteController::class, 'g
 Route::get('/historias/editar/{numero_historia}', [HistoriaController::class, 'editByNumeroHistoria'])->name('historias.editByNumeroHistoria');
 Route::put('/historias/actualizar/{numero_historia}', [HistoriaController::class, 'updateByNumeroHistoria'])->name('historias.updateByNumeroHistoria');
 Route::resource('historias', HistoriaController::class);
-Route::get('/paciente/historia/create', [HistoriaController::class, 'create'])->name('paciente.historia.create');
+
 });
 require __DIR__.'/auth.php';
