@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -32,7 +33,8 @@
                     <td>{{ $paciente->direccion }}</td>
                     <td>
                         <a href="{{ route('pacientes.show', $paciente) }}">Ver</a> |
-                        <a href="{{ route('pacientes.edit', $paciente) }}">Editar</a> |
+                        <a href="{{ route('pacientes.edit', $paciente) }}">Editar</a>
+
                         <form action="{{ route('pacientes.destroy', $paciente) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

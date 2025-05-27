@@ -28,4 +28,3 @@
     @endsection
 </x-app-layout>
 
-

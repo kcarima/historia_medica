@@ -4,25 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class historia extends Model
+class Historia extends Model
 {
-    protected $table = 'historias';
-
     protected $fillable = [
-        'genero',
-        'primer_apellido',
-        'segundo_apellido',
-        'nombre',
-        'cedula',
-        'telefono_local',
-        'grupo_sanguineo',
-        'estado_civil',
-        'fecha_nacimiento',
-        'correo_electronico',
-        'celular',
-        'edad',
-        'direccion',
-        'municipio',
-        'parroquia',
+        'historia',          // número de historia
+        'fecha_atencion',
+        'motivo_consulta',
+        'paciente_id',       // si tienes relación con paciente
     ];
+
+    // Relación con Paciente (opcional)
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
 }
+

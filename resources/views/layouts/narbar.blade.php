@@ -1,15 +1,4 @@
 <header id="header" class="header sticky-top">
-    <div class="topbar d-flex align-items-center">
-        <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="d-none d-md-flex align-items-center">
-            <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center me-auto">
-                <img src="{{asset('assets/img/logo.png')}}">
-                <h1 class="sitename">Sistema de Citas de Registro Médico</h1>
-            </a>
-        </div>
-
-        </div>
-    </div><!-- End Top Bar -->
 
     <div class="branding d-flex align-items-center">
         <div class="container position-relative d-flex align-items-center justify-content-end">

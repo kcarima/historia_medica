@@ -1,12 +1,10 @@
-
 <x-app-layout>
 @section('contenido')
 <title>Registro de Paciente</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/formulario-paciente.css') }}" rel="stylesheet">
-</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ asset('css/formulario-paciente.css') }}" rel="stylesheet">
 
-   <body>
+<body>
   <div class="container mt-4">
     <div class="contenedor-principal">
       <div class="linea-decorativa"></div>
@@ -14,14 +12,14 @@
       <form>
         <!-- Contenedor con scroll horizontal -->
         <div class="form-section">
-          <!-- Primera fila de campos: Género, Primer Apellido, Segundo Apellido, Nombre, Cédula, Teléfono Local -->
-         <div class="mb-3">
-    <label for="genero" class="form-label">Género</label>
-    <select class="form-select form-select-sm" id="genero" name="genero">
-        <option value="Masculino" selected>Masculino</option>
-        <option value="Femenino">Femenino</option>
-    </select>
-</div>
+          <!-- Primera fila de campos -->
+          <div class="mb-3">
+            <label for="genero" class="form-label">Género</label>
+            <select class="form-select form-select-sm" id="genero" name="genero">
+              <option value="Masculino" selected>Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
           <div>
             <label class="form-label">Primer Apellido</label>
             <input type="text" class="form-control form-control-sm" value="" />
@@ -45,7 +43,7 @@
         </div>
 
         <div class="form-section">
-          <!-- Segunda fila de campos: Grupo Sanguíneo, Estado Civil, Fecha Nacimiento, Correo Electrónico, Celular -->
+          <!-- Segunda fila de campos -->
           <div>
             <label class="form-label">Grupo Sanguíneo</label>
             <input type="text" class="form-control form-control-sm" value="" />
@@ -66,12 +64,11 @@
             <label class="form-label">Celular</label>
             <input type="text" class="form-control form-control-sm" value="" />
           </div>
-          <!-- Espacio vacío para alinear con la fila anterior -->
           <div style="min-width: 200px;"></div>
         </div>
 
         <div class="form-section">
-          <!-- Tercera fila de campos: Edad, Dirección, Municipio, Parroquia -->
+          <!-- Tercera fila de campos -->
           <div>
             <label class="form-label">Edad</label>
             <input type="text" class="form-control form-control-sm" value="" />
@@ -88,27 +85,20 @@
             <label class="form-label">Parroquia</label>
             <input type="text" class="form-control form-control-sm" value="" />
           </div>
-            </div>
-          <div class="col-12 text-end">
-            <button type="submit" class="btn btn-danger">Volver</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
 
-
-            <button type="button" class="btn btn-primary me-2" onclick="window.location.href='{{ route('pacientes.historia') }}'">
-                Crear Historia
-            </button>
-
-
+        <div class="col-12 text-end mt-3">
+          <button type="submit" class="btn btn-danger">Volver</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-primary me-2" onclick="window.location.href='{{ route('paciente.historias.create') }}'">
+            Crear Historia
+          </button>
+        </div>
       </form>
     </div>
-
-
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-        </div>
-
-
 @endsection
 </x-app-layout>

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +36,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes/pre_anestesia', [PacienteController::class, 'pre_anestesia'])->name('pacientes.pre_anestesia');
     Route::get('/pacientes/solicitud_banco_sangre', [PacienteController::class, 'solicitud_banco_sangre'])->name('pacientes.solicitud_banco_sangre');
     Route::get('/pacientes/solicitud_imagenes', [PacienteController::class, 'solicitud_imagenes'])->name('pacientes.solicitud_imagenes');
+
+  Route::resource('pacientes', PacienteController::class);
+  Route::get('/pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
+Route::get('/pacientes/edit/{historia}', [PacienteController::class, 'edit'])->name('pacientes.edit');
+Route::put('/pacientes/update/{historia}', [PacienteController::class, 'update'])->name('pacientes.update');
+Route::get('/pacientes/{id}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
+Route::get('/pacientes/edit/{historia}', [PacienteController::class, 'editPorHistoria'])->name('pacientes.editPorHistoria');
+Route::put('/pacientes/{id}', [PacienteController::class, 'update'])->name('pacientes.update');
+Route::post('/pacientes/guardar_historia_medica', [PacienteController::class, 'guardarHistoriaMedica']);
+Route::get('/historias/editar/{numero_historia}', [HistoriaController::class, 'editByNumeroHistoria'])->name('historias.editByNumeroHistoria');
+Route::put('/historias/actualizar/{numero_historia}', [HistoriaController::class, 'updateByNumeroHistoria'])->name('historias.updateByNumeroHistoria');
+Route::resource('historias', HistoriaController::class);
+Route::get('/paciente/historia/create', [HistoriaController::class, 'create'])->name('paciente.historia.create');
 });
 require __DIR__.'/auth.php';
