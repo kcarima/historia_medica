@@ -45,10 +45,10 @@
                     @foreach($pacientes as $paciente)
                     <tr>
                         <td>
-                            <a href="{{ route('pacientes.editPorHistoria', $paciente->historia) }}" class="edit-icon" title="Editar paciente">
+                            <a href="{{ route('pacientes.edit', $paciente->historia) }}" class="edit-icon" title="Editar paciente">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a href="{{ route('pacientes.editPorHistoria', $paciente->historia) }}" class="edit-icon" title="Editar información">
+                            <a href="{{ route('historia.create', $paciente->historia) }}" class="edit-icon" title="Editar información">
                                 <i class="bi bi-card-text"></i>
                             </a>
                         </td>
