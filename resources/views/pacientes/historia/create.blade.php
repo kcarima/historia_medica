@@ -16,7 +16,7 @@
 
   <!-- Contenedor formulario (contenido principal) -->
   <div class="contenido-principal flex-grow-1">
-<form action="guardar_historia_medica.php" method="post" class="form-container">
+<form action="{{ route('historia.store',$paciente->historia) }}" method="post" class="form-container">
 
       <h3 id="informacion_consulta">Información Específica de la Consulta o Atención</h3>
       <div class="form-group">

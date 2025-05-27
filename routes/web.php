@@ -17,8 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/paciente', [PacienteController::class, 'index'])->name('historia');
-    Route::get('/pacientes/create', [PacienteController::class, 'create'])->name('pacientes.create');
+
     Route::get('/pacientes/historia', [PacienteController::class, 'historia'])->name('pacientes.historia');
     Route::get('/pacientes/nota_operatoria', [PacienteController::class, 'nota_operatoria'])->name('pacientes.nota_operatoria');
     Route::get('/pacientes/imagenologia', [PacienteController::class, 'imagenologia'])->name('pacientes.imagenologia');
@@ -37,18 +36,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes/solicitud_banco_sangre', [PacienteController::class, 'solicitud_banco_sangre'])->name('pacientes.solicitud_banco_sangre');
     Route::get('/pacientes/solicitud_imagenes', [PacienteController::class, 'solicitud_imagenes'])->name('pacientes.solicitud_imagenes');
 
-  Route::resource('pacientes', PacienteController::class);
-  Route::get('/pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
-Route::get('/pacientes/edit/{historia}', [PacienteController::class, 'edit'])->name('pacientes.edit');
-Route::put('/pacientes/update/{historia}', [PacienteController::class, 'update'])->name('pacientes.update');
-Route::get('/pacientes/{id}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit');
-Route::get('/pacientes/edit/{historia}', [PacienteController::class, 'editPorHistoria'])->name('pacientes.editPorHistoria');
-Route::put('/pacientes/{id}', [PacienteController::class, 'update'])->name('pacientes.update');
-Route::post('/pacientes/guardar_historia_medica', [PacienteController::class, 'guardarHistoriaMedica']);
-Route::get('/pacientes/historia/{historia}', [HistoriaController::class, 'create'])->name('historia.create');
-Route::get('/historias/editar/{historia}', [HistoriaController::class, 'editByNumeroHistoria'])->name('historias.edit');
-Route::put('/historias/actualizar/{historia}', [HistoriaController::class, 'updateByNumeroHistoria'])->name('historias.updateByNumeroHistoria');
-//Route::resource('historias', HistoriaController::class)->names('historia');
+// route de paciente
+    Route::get('/pacientes', [PacienteController::class, 'index'])->name('pacientes.index');
+    Route::post('/pacientes', [PacienteController::class, 'store'])->name('pacientes.store');
+    Route::get('/pacientes/create', [PacienteController::class, 'create'])->name('pacientes.create');
+    Route::get('/pacientes/{historia}', [PacienteController::class, 'show'])->name('pacientes.show');
+    Route::get('/pacientes/edit/{historia}', [PacienteController::class, 'edit'])->name('pacientes.edit');
+    Route::put('/pacientes/{historia}', [PacienteController::class, 'update'])->name('pacientes.update');
+    Route::delete('/pacientes/{historia}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
+// route de historia
+    Route::get('/pacientes/historia/{historia}', [HistoriaController::class, 'create'])->name('historia.create');
+    Route::get('/pacientes/historia/editar/{historia}', [HistoriaController::class, 'edit'])->name('historia.edit');
+    Route::put('/historias/actualizar/{historia}', [HistoriaController::class, 'update'])->name('historia.update');
+    Route::post('/pacientes/historia/{historia}', [HistoriaController::class, 'store'])->name('historia.store');
+    Route::delete('/pacientes/historia/{historia}', [HistoriaController::class, 'destroy'])->name('historia.destroy');
+
 
 });
 require __DIR__.'/auth.php';
