@@ -2,6 +2,9 @@
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
@@ -50,6 +53,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/historias/actualizar/{historia}', [HistoriaController::class, 'update'])->name('historia.update');
     Route::post('/pacientes/historia/{historia}', [HistoriaController::class, 'store'])->name('historia.store');
     Route::delete('/pacientes/historia/{historia}', [HistoriaController::class, 'destroy'])->name('historia.destroy');
+
+    // Rutas de usuarios, roles y permisos
+    Route::resource('users', UserController::class)->names('users');
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
 
 
 });

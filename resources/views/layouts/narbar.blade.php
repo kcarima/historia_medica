@@ -41,8 +41,8 @@
             <li class="dropdown" ><a href="#">Usuario<i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                     <ol>
-                        <li><a href="#">Gestor de Usuario</a></li>
-                        <li><a href="#">Gestor de Usuario</a></li>
+                        <li><a href="{{ route('users.index') }}">Gestor de Usuario</a></li>
+                        <li><a href="#">Gestor de Roles</a></li>
                         <li><a href="#">Editar Clave</a></li>
                     </ol>
                 </ul>
