@@ -1,31 +1,27 @@
 <?php
+// database/migrations/2025_05_30_000001_create_nota_operatorias_table.php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateNotaOperatoriasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('nota_operatorias', function (Blueprint $table) {
             $table->id();
-
-            $table->text('nota')->nullable();
-            $table->string('historia',null);
-             $table->foreign('historia')->references('historia')->on('pacientes');
+            $table->string('historia'); // Número de historia clínica
+            $table->text('nota');       // Texto de la nota operatoria
             $table->timestamps();
+
+            // Índice para optimizar búsquedas por historia
+            $table->index('historia');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('nota');
+        Schema::dropIfExists('nota_operatorias');
     }
-};
+}

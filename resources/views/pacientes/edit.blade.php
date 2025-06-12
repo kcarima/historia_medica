@@ -33,8 +33,9 @@
     @endif
 
     <!-- Formulario para editar paciente -->
-    <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
-        @csrf
+   <form action="{{ route('pacientes.update', $paciente->historia) }}" method="POST">
+    @csrf
+    @method('PUT')
 
         <!-- Campo oculto para enviar historia y validar -->
         <input type="hidden" name="historia" value="{{ old('historia', $paciente->historia) }}">
@@ -106,7 +107,8 @@
 
             <div class="col-md-2">
                 <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento</label>
-                <input type="date" class="form-control form-control-sm" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento', $paciente->fecha_nacimiento) }}" required>
+                <input type="date" class="form-control form-control-sm" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento', $paciente->fecha_nacimiento) }}" required
+                    max="{{ date('Y-m-d') }}" min="{{ date('Y-m-d', strtotime('-120 years')) }}">
             </div>
 
             <div class="col-md-1">

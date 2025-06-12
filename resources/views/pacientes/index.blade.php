@@ -8,7 +8,11 @@
         <!-- Bootstrap Icons para el ícono de editar -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     </head>
-
+@if(auth()->check() && auth()->user()->role === 'medico')
+    <a href="{{ route('pacientes.pdf') }}" class="btn btn-danger ms-2">
+        <i class="bi bi-file-earmark-pdf"></i> Exportar PDF
+    </a>
+@endif
     <div class="container mt-4">
 
         <div class="top-bar mb-3">
@@ -18,12 +22,19 @@
 
         </div>
 
-        <div class="filters mb-3">
-            <div class="filter-group">
-                <input type="text" class="form-control" placeholder="Hist. Clínic..." />
-                <button class="btn btn-outline-primary filter-search">Buscar</button>
-            </div>
-        </div>
+      <form method="GET" action="{{ route('pacientes.index') }}">
+    <input type="text"
+           name="buscar"
+           placeholder="Buscar por cédula, nombre o historia"
+           value="{{ request('buscar') }}"
+           pattern="\d{6,10}"
+           title="Ingrese entre 6 y 10 dígitos numéricos"
+           maxlength="10"
+           minlength="6"
+           inputmode="numeric"
+           required>
+    <button type="submit">Buscar</button>
+</form>
 
         <div class="table-container">
             <div class="table-header mb-2">
@@ -65,6 +76,16 @@
         </div>
 
     </div>
-
+<script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    const input = this.buscar;
+    const regex = /^\d{6,10}$/;
+    if (!regex.test(input.value)) {
+        alert('Por favor ingrese solo números entre 6 y 10 dígitos.');
+        input.focus();
+        e.preventDefault();
+    }
+});
+</script>
     @endsection
 </x-app-layout>

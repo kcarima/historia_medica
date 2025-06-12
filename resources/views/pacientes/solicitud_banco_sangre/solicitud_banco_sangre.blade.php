@@ -22,7 +22,8 @@
             </div>
             <div class="col-md-3">
                 <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
-                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required
+                    max="{{ date('Y-m-d') }}" min="{{ date('Y-m-d', strtotime('-120 years')) }}">
             </div>
             <div class="col-md-3">
                 <label for="sexo" class="form-label">Sexo</label>

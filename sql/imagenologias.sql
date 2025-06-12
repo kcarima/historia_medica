@@ -1,0 +1,6 @@
+CREATE TABLE imagenologias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    historia VARCHAR(10) NOT NULL,
+    archivo VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);

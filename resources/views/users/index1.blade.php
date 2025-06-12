@@ -15,35 +15,38 @@
               </div>
               <div class="card-body px-0 pb-2">
                 <div class="table-responsive p-0">
-                  <table class="table align-items-center mb-0">
-                    <thead>
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Rol</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $user)
-                        <tr>
-                            <td>{{ $user->username }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->role->name ?? 'Sin Rol' }}</td> {{-- Muestra el nombre del rol --}}
-                            <td>
-                                <a href="{{ route('users.show', $user) }}" title="Detalle">Ver</a>
-                                <a href="{{  route('users.edit', $user) }}" title="Editar">Editar</a>
-                                <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" title="Eliminar" onclick="return confirm('¿Estás seguro Que desea Eliminar el usuario?')">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
+                    <div class="table-header mb-2">
+                        Total de usuarios | {{ $users->count() }} de {{ $users->count() }}
+                    </div>
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->role->name ?? 'Sin Rol' }}</td> {{-- Muestra el nombre del rol --}}
+                                    <td>
+                                        <a href="{{ route('users.show', $user) }}" title="Detalle">Ver</a>
+                                        <a href="{{  route('users.edit', $user) }}" title="Editar">Editar</a>
+                                        <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" title="Eliminar" onclick="return confirm('¿Estás seguro Que desea Eliminar el usuario?')">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                   </table>
                 </div>
               </div>

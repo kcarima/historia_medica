@@ -1,0 +1,22 @@
+@startuml
+actor Usuario
+participant "Formulario Web" as Form
+participant "Controlador Laravel" as Controller
+participant "Base de Datos" as DB
+
+== Registro de Paciente ==
+Usuario -> Form : Ingresa datos y envía formulario
+Form -> Controller : POST /registrar-paciente (datos)
+Controller -> DB : Guardar paciente
+DB --> Controller : Confirmación/ID paciente
+Controller --> Form : Respuesta (éxito o error)
+Form --> Usuario : Muestra mensaje de resultado
+
+== Búsqueda y Visualización ==
+Usuario -> Form : Ingresa cédula/historia y busca
+Form -> Controller : POST /buscar-paciente (criterios)
+Controller -> DB : Buscar paciente
+DB --> Controller : Datos del paciente
+Controller --> Form : Respuesta (datos o error)
+Form --> Usuario : Muestra datos o mensaje de error
+@enduml

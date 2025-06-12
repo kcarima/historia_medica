@@ -1,175 +1,103 @@
 <x-app-layout>
-    @section('contenido')
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Resultados Radioimagenológicos</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{ asset('css/imagenologia.css') }}" rel="stylesheet" />
-
-    </head>
-    <button type="button" class="btn btn-atras" onclick="history.back()">← Atrás</button>
-
-    <body>
-        <div class="contenedor-imagenologia">
-            <!-- Botón Atrás -->
-
-            <h1>Resultados Radioimagenológicos</h1>
-
-            <label for="tipoResultado" class="label-tipo">Tipo de Resultado</label>
-            <select name="tipo_resultado" id="tipoResultado" required>
-                <option value="" disabled selected>Selecciona un tipo</option>
-                <option value="radiografia">Radiografía</option>
-                <option value="tomografia">Tomografía</option>
-                <option value="resonancia">Resonancia Magnética</option>
-                <option value="ecografia">Ecografía</option>
-                <option value="otros">Otros</option>
-            </select>
-
-            <label class="label-imagenes">Adjuntar Imágenes</label>
-            <button type="button" class="btn-agregar-imagen" id="btnAgregarImagen">Agregar Imagen</button>
-            <input type="file" id="imagenes" accept="image/*" multiple style="display:none;" />
-
-            <div class="preview-container" id="previewContainer"></div>
-
-            <div class="botones">
-                <button type="button" id="btnEliminar" class="btn eliminar" disabled>Eliminar</button>
-                <button type="button" class="btn guardar">Guardar</button>
+@section('contenido')
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-search me-2"></i>Buscar Paciente para Imagenología</h5>
+                </div>
+                <div class="card-body">
+                    <form method="GET" action="{{ route('pacientes.imagenologia') }}">
+                        <div class="mb-3">
+                            <label for="cedula" class="form-label">Cédula:</label>
+                            <input type="text" class="form-control" id="cedula" name="cedula"
+                                placeholder="Ej: 123456789" autocomplete="off"
+                                maxlength="10" pattern="\d{7,10}" inputmode="numeric"
+                                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+                        </div>
+                        <div class="mb-3">
+                            <label for="historia" class="form-label">N° Historia:</label>
+                            <input type="text" class="form-control" id="historia" name="historia"
+                                placeholder="Ej: 100001" autocomplete="off"
+                                maxlength="10" pattern="\d{1,10}" inputmode="numeric"
+                                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-sm" style="width:auto; min-width:90px;">
+                                <i class="fas fa-search me-2"></i>Buscar Paciente
+                            </button>
+                        </div>
+                    </form>
+                    @if(request()->has('cedula') || request()->has('historia'))
+                        @if(!isset($paciente) || !$paciente)
+                            <div class="alert alert-danger mt-3">
+                                Paciente no encontrado. Verifique la cédula o el número de historia.
+                            </div>
+                        @endif
+                    @endif
+                </div>
             </div>
         </div>
-
-        <!-- Modal para mostrar imagen en grande -->
-        <div class="modal-img-bg" id="modalImgBg">
-            <div class="modal-img-content">
-                <button class="modal-img-close" id="modalImgClose" title="Cerrar">×</button>
-                <img id="modalImg" src="" alt="Imagen ampliada">
+    </div>
+</div>
+@if(isset($paciente) && $paciente)
+    <div class="container mt-4">
+        <button type="button" class="btn btn-secondary mb-3" onclick="history.back()">← Atrás</button>
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <strong>Paciente:</strong> {{ $paciente->primer_apellido }} {{ $paciente->segundo_apellido }} {{ $paciente->nombre }}
+                <br>
+                <strong>Cédula:</strong> {{ $paciente->cedula }} &nbsp; <strong>Historia:</strong> {{ $paciente->historia }}
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ route('imagenologia.guardar') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="historia" value="{{ $paciente->historia }}">
+                    <div class="mb-3">
+                        <label for="imagenes" class="form-label">Adjuntar Imágenes</label>
+                        <input type="file" class="form-control" id="imagenes" name="imagenes[]" accept="image/*" multiple required>
+                    </div>
+                    <div class="mb-3 text-end">
+                        <button type="submit" class="btn btn-success">Guardar Imágenes</button>
+                    </div>
+                </form>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @php
+                    $imagenesGuardadas = \DB::table('imagenologias')
+                        ->where('historia', $paciente->historia)
+                        ->orderByDesc('created_at')
+                        ->get();
+                @endphp
+                @if($imagenesGuardadas && count($imagenesGuardadas))
+                    <h5 class="mt-4">Imágenes guardadas para este paciente:</h5>
+                    <div class="row">
+                        @foreach($imagenesGuardadas as $img)
+                            <div class="col-md-3 mb-3">
+                                <div class="card">
+                                    <a href="{{ asset('storage/' . $img->archivo) }}" target="_blank">
+                                        <img src="{{ asset('storage/' . $img->archivo) }}" class="card-img-top" alt="Imagen" style="max-height:150px;object-fit:contain;">
+                                    </a>
+                                    <div class="card-body p-2 text-center">
+                                        <small class="text-muted">Subida: {{ $img->created_at ? \Carbon\Carbon::parse($img->created_at)->format('d/m/Y H:i') : '' }}</small>
+                                    </div>
+                                    <form method="POST" action="{{ route('imagenologia.eliminar', $img->id) }}" onsubmit="return confirm('¿Eliminar esta imagen?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm w-100 mt-2">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const btnAgregarImagen = document.getElementById('btnAgregarImagen');
-            const inputImagenes = document.getElementById('imagenes');
-            const previewContainer = document.getElementById('previewContainer');
-            const tipoResultado = document.getElementById('tipoResultado');
-            const btnEliminar = document.getElementById('btnEliminar');
-            // Modal
-            const modalImgBg = document.getElementById('modalImgBg');
-            const modalImg = document.getElementById('modalImg');
-            const modalImgClose = document.getElementById('modalImgClose');
-
-            // Almacena objetos File temporales por tipo
-            let filesPorTipo = {
-                radiografia: [],
-                tomografia: [],
-                resonancia: [],
-                ecografia: [],
-                otros: []
-            };
-
-            let tipoActual = "";
-
-            tipoResultado.addEventListener('change', function () {
-                tipoActual = this.value;
-                renderizarImagenes();
-            });
-
-            btnAgregarImagen.addEventListener('click', () => {
-                if (!tipoResultado.value) {
-                    alert("Selecciona un tipo de resultado primero.");
-                    return;
-                }
-                inputImagenes.value = '';
-                inputImagenes.click();
-            });
-
-            inputImagenes.addEventListener('change', () => {
-                if (!tipoActual) return;
-                const files = Array.from(inputImagenes.files);
-                filesPorTipo[tipoActual].push(...files);
-                renderizarImagenes();
-            });
-
-            btnEliminar.addEventListener('click', () => {
-                if (!tipoActual) return;
-                const checks = document.querySelectorAll('.img-check:checked');
-                if (checks.length === 0) return;
-                // Mensaje de confirmación
-                if (!confirm("¿Está seguro que desea eliminar las imágenes seleccionadas?")) return;
-                let indices = Array.from(checks).map(chk => parseInt(chk.dataset.idx));
-                indices.sort((a, b) => b - a);
-                for (let idx of indices) {
-                    filesPorTipo[tipoActual].splice(idx, 1);
-                }
-                renderizarImagenes();
-            });
-
-            function renderizarImagenes() {
-                previewContainer.innerHTML = '';
-                if (!tipoActual || filesPorTipo[tipoActual].length === 0) {
-                    btnEliminar.disabled = true;
-                    return;
-                }
-                filesPorTipo[tipoActual].forEach((file, idx) => {
-                    if (!file.type.startsWith('image/')) return;
-                    const reader = new FileReader();
-                    reader.onload = e => {
-                        const imgWrapper = document.createElement('div');
-                        imgWrapper.classList.add('img-wrapper');
-
-                        // Checkbox
-                        const check = document.createElement('input');
-                        check.type = 'checkbox';
-                        check.classList.add('img-check');
-                        check.dataset.idx = idx;
-
-                        // Imagen
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.alt = file.name;
-                        img.classList.add('preview-img');
-                        img.title = "Haz clic para ampliar";
-
-                        // Abrir modal al hacer clic en la imagen
-                        img.addEventListener('click', () => {
-                            modalImg.src = img.src;
-                            modalImgBg.classList.add('active');
-                        });
-
-                        imgWrapper.appendChild(check);
-                        imgWrapper.appendChild(img);
-                        previewContainer.appendChild(imgWrapper);
-
-                        // Habilita el botón Eliminar si hay alguna seleccionada
-                        check.addEventListener('change', function() {
-                            const anyChecked = document.querySelectorAll('.img-check:checked').length > 0;
-                            btnEliminar.disabled = !anyChecked;
-                        });
-                    };
-                    reader.readAsDataURL(file);
-                });
-                btnEliminar.disabled = true;
-            }
-
-            // Modal: cerrar al hacer clic en la X o fuera de la imagen
-            modalImgClose.addEventListener('click', () => {
-                modalImgBg.classList.remove('active');
-                modalImg.src = "";
-            });
-            modalImgBg.addEventListener('click', (e) => {
-                if (e.target === modalImgBg) {
-                    modalImgBg.classList.remove('active');
-                    modalImg.src = "";
-                }
-            });
-
-            // Inicializa en vacío
-            tipoResultado.value = "";
-            tipoActual = "";
-        });
-        </script>
-    </body>
-    </html>
-    @endsection
-    </x-app-layout>
+    </div>
+@endif
+@endsection
+</x-app-layout>

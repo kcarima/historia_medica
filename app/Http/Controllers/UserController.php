@@ -15,11 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::with('role')->get(); // Carga la relación role
+        $roles = Role::all(); // Carga la relación role
         // return view('users.index', compact('users'));
         //$this->authorize('manage users'); // Verifica si el usuario tiene el permiso 'manage users'
         $users = User::with('role')->get();
-        return view('users.index', compact('users'));
+        return view('users.index', compact(['users'.'roles']));
     }
 
     /**

@@ -1,10 +1,4 @@
-/*
-Template Name: DASHGUM FREE - Bootstrap 3.2 Admin Theme
-Template Version: 1.0
-Author: Carlos Alvarez
-Website: http://blacktie.co
-Premium: http://www.gridgum.com
-*/
+
 
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
@@ -527,7 +521,7 @@ ul.top-menu > li > a:focus {
 
 .dropdown-menu.extended li p {
     background-color: #f1f2f7;
-    color: #666666;
+    color: #d81313;
     margin: 0;
     padding: 10px;
     border-radius: 4px 4px 0px 0px;
@@ -2221,7 +2215,7 @@ label {
 }
 
 .ui-sortable li.list-info {
-    border-left: 3px solid #58c9f3;
+    border-left: 3px solid #548496;
 }
 
 .ui-sortable li.list-inverse {

@@ -9,10 +9,10 @@ class Fisico extends Model
 {
     use HasFactory;
 
-    protected $table = 'examenes_fisicos';
+    protected $table = 'fisico';
 
     protected $fillable = [
-        'paciente_id',
+        'historia',
         'presion_arterial',
         'frecuencia_cardiaca',
         'frecuencia_respiratoria',
@@ -23,20 +23,4 @@ class Fisico extends Model
         'examen_general',
         'examen_por_sistemas',
     ];
-
-    // Castings para los campos numéricos
-    protected $casts = [
-        'frecuencia_cardiaca' => 'integer',
-        'frecuencia_respiratoria' => 'integer',
-        'temperatura' => 'float',
-        'saturacion_oxigeno' => 'integer',
-        'peso' => 'float',
-        'talla' => 'float',
-    ];
-
-    // Relación con Paciente
-    public function paciente()
-    {
-        return $this->belongsTo(Paciente::class);
-    }
 }

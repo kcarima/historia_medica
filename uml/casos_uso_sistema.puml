@@ -1,0 +1,40 @@
+@startuml
+actor Usuario
+actor Administrador
+
+rectangle "Sistema de Gestión de Pacientes" {
+    usecase "Registrar Paciente" as UC1
+    usecase "Buscar Paciente" as UC2
+    usecase "Editar Paciente" as UC3
+    usecase "Eliminar Paciente" as UC4
+    usecase "Solicitar Exámenes de Laboratorio" as UC5
+    usecase "Generar PDF de Solicitud" as UC6
+    usecase "Ver Historial Clínico" as UC7
+    usecase "Gestionar Usuarios" as UC8
+}
+
+// Usuario (líneas sólidas)
+Usuario --> UC1
+Usuario --> UC2
+Usuario --> UC3
+Usuario --> UC4
+Usuario --> UC5
+Usuario --> UC6
+Usuario --> UC7
+
+' Administrador (líneas de puntos)
+Administrador ..> UC1
+Administrador ..> UC2
+Administrador ..> UC3
+Administrador ..> UC4
+Administrador ..> UC5
+Administrador ..> UC6
+Administrador ..> UC7
+Administrador ..> UC8
+
+UC5 --> UC2 : <<include>>
+UC6 --> UC5 : <<include>>
+UC3 --> UC2 : <<include>>
+UC4 --> UC2 : <<include>>
+@enduml
+
