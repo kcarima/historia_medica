@@ -4,29 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateEgresosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('egreso', function (Blueprint $table) {
+        Schema::create('egresos', function (Blueprint $table) {
             $table->id();
-
+            $table->string('historia');
             $table->text('diagnostico_egreso')->nullable();
             $table->text('recomendaciones_seguimiento')->nullable();
-            $table->string('historia',null);
-             $table->foreign('historia')->references('historia')->on('pacientes');
             $table->timestamps();
+            $table->index('historia');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('egreso');
+        Schema::dropIfExists('egresos');
     }
-};
+}

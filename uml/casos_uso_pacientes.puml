@@ -1,0 +1,27 @@
+@startuml
+actor Usuario
+actor Administrador
+
+rectangle "Gestión de Pacientes" {
+    usecase "Registrar Paciente" as UC1
+    usecase "Buscar Paciente" as UC2
+    usecase "Editar Paciente" as UC3
+    usecase "Eliminar Paciente" as UC4
+    usecase "Ver Historial Clínico" as UC5
+}
+
+Usuario --> UC1
+Usuario --> UC2
+Usuario --> UC3
+Usuario --> UC4
+Usuario --> UC5
+
+Administrador ..> UC1
+Administrador ..> UC2
+Administrador ..> UC3
+Administrador ..> UC4
+Administrador ..> UC5
+
+UC3 --> UC2 : <<include>>
+UC4 --> UC2 : <<include>>
+@enduml

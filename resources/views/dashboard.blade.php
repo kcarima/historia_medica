@@ -12,11 +12,10 @@
         <section id="hero" class="hero section">
 
             <div id="hero-carousel" class="carousel slide carousel-fade position-relative" data-bs-ride="carousel" data-bs-interval="5000"
-                 style="background-image: url('{{ asset('assets/img/clinica anfe.webp') }}'); background-size: cover; background-position: center; min-height: 400px;">
+                 style="background-image: url('{{ asset('assets/img/anfe central.png') }}'); background-size: cover; background-position: center; min-height: 400px;">
 
-                <div class="position-absolute bottom-0 start-50 translate-middle-x text-center text-white" style="width: 100%; padding-bottom: 20px;">
-                    <h2 style="font-size: 2em; margin-bottom: 5px;">BIENVENIDOS</h2>
-                    <h2 style="font-size: 2em;">AL SISTEMA DE HISTORIAS MÉDICAS</h2>
+                <div class="position-absolute bottom-0 start-50 translate-middle-x text-center text-white" style="width: 100%; padding-bottom: 50px;">
+
                 </div>
 
             </div>

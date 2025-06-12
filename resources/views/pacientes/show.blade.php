@@ -56,11 +56,11 @@
 <div class="row">
     <div class="col-6">
         <div class="d-flex justify-content-center"><strong>Reconocimientos contratados</strong></div>
-        <div id="contratados" class="d-flex justify-content-center">{{ $cliente->numeroreconocimientoscontratados}}</div>     
+        <div id="contratados" class="d-flex justify-content-center">{{ $cliente->numeroreconocimientoscontratados}}</div>
     </div>
     <div class="col-6">
         <div class="d-flex justify-content-center"><strong>Reconocimientos realizados</strong></div>
-        <div id="utilizados" class="d-flex justify-content-center">{{ $cliente->numeroreconocimientosutilizados}}</div>       
+        <div id="utilizados" class="d-flex justify-content-center">{{ $cliente->numeroreconocimientosutilizados}}</div>
     </div>
 </div>
 @endsection

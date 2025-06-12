@@ -1,22 +1,44 @@
 <x-app-layout>
 
-@section('contenido')
-
+<!DOCTYPE html>
+<html>
 <head>
-
-    <title>Nota Operatoria</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/nota_operatoria.css') }}" rel="stylesheet">
+    <title>Listado de Pacientes</title>
+    <style>
+        body { font-family: DejaVu Sans, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 4px; font-size: 12px; }
+        th { background: #eee; }
+    </style>
 </head>
 <body>
-    <div class="contenedor-nota">
-        <h2>Nota operatoria</h2>
-        <form action="guardar_nota.php" method="POST">
-            <textarea name="nota" class="campo-nota" required placeholder="Escribe la nota operatoria..."></textarea>
-            <button type="submit" class="btn-guardar">Guardar</button>
-        </form>
-    </div>
+    <h2>Listado de Pacientes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Apellidos y Nombre</th>
+                <th>Nacimiento</th>
+                <th>Hist. Clín.</th>
+                <th>Teléfono</th>
+                <th>Móvil</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($pacientes as $paciente)
+            <tr>
+                <td>{{ $paciente->primer_apellido }} {{ $paciente->segundo_apellido }} {{ $paciente->nombre }}</td>
+                <td>{{ \Carbon\Carbon::parse($paciente->fecha_nacimiento)->format('d/m/Y') }}</td>
+                <td>{{ $paciente->historia }}</td>
+                <td>{{ $paciente->telefono_local }}</td>
+                <td>{{ $paciente->celular }}</td>
+                <td>{{ $paciente->direccion }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>
+
 @endsection
 </x-app-layout>

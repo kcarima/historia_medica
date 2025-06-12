@@ -1,0 +1,17 @@
+@startuml
+actor Usuario
+actor Administrador
+
+rectangle "Módulo de Laboratorio" {
+    usecase "Solicitar Exámenes de Laboratorio" as UC1
+    usecase "Generar PDF de Solicitud" as UC2
+}
+
+Usuario --> UC1
+Usuario --> UC2
+
+Administrador ..> UC1
+Administrador ..> UC2
+
+UC2 --> UC1 : <<include>>
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+actor Usuario
+actor Administrador
+
+rectangle "Módulo de Imagenología" {
+    usecase "Subir Imagen" as UC1
+    usecase "Ver Imágenes" as UC2
+    usecase "Eliminar Imagen" as UC3
+}
+
+Usuario --> UC1
+Usuario --> UC2
+Usuario --> UC3
+
+Administrador ..> UC1
+Administrador ..> UC2
+Administrador ..> UC3
+
+UC3 --> UC2 : <<include>>
+@enduml

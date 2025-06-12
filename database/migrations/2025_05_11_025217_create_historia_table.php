@@ -1,32 +1,30 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateHistoriasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('historia', function (Blueprint $table) {
+        Schema::create('historias', function (Blueprint $table) {
             $table->id();
-            $table->string('historia',10);
-            $table->dateTime('fecha_atencion'); // Fecha y hora de la atención
-            $table->text('motivo_consulta');    // Motivo de la consulta
+            $table->foreignId('paciente_id')->constrained('pacientes')->onDelete('cascade');
+            $table->dateTime('fecha_atencion');
+            $table->string('motivo_consulta', 1000);
+            $table->string('diagnostico', 255)->nullable();
+            $table->text('plan_tratamiento')->nullable();
+            $table->text('tratamiento_farmacologico')->nullable();
+            $table->text('ordenes_examenes')->nullable();
+            $table->text('evolucion')->nullable();
+            $table->text('interconsultas')->nullable();
+            $table->text('observaciones')->nullable();
             $table->timestamps();
-            $table->softDeletes();              // Para borrado lógico si lo deseas
-            $table->foreign('historia')->references('historia')->on('pacientes');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('historia');
+        Schema::dropIfExists('historias');
     }
-};
+}
