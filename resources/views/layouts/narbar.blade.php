@@ -1,12 +1,18 @@
 <header id="header" class="header sticky-top">
 
     <div class="branding d-flex align-items-center">
+
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="d-none d-md-flex align-items-center">
+                <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center me-auto">
+                    <img src="{{asset('assets/img/logo.png')}}">
+                </a>
+            </div>
+        </div>
         <div class="container position-relative d-flex align-items-center justify-content-end">
-
-
         <nav id="navmenu" class="navmenu">
             <ul>
-            <li><a href="#">Citas</a></li>
+            {{-- <li><a href="#">Citas</a></li>  --}}
             <li><a href="#">Especialidades</a></li>
             <li><a href="#">Doctores</a></li>
             <li><a href="{{ route('pacientes.index') }}">Pacientes</a></li>
@@ -34,7 +40,11 @@
 
             <li class="dropdown" ><a href="#">Usuario<i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                    <li><a href="#">Editar Perfil</a></li>
+                    <ol>
+                        <li><a href="#">Gestor de Usuario</a></li>
+                        <li><a href="#">Gestor de Usuario</a></li>
+                        <li><a href="#">Editar Clave</a></li>
+                    </ol>
                 </ul>
             </li>
             <li>
@@ -52,7 +62,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="cta-btn" href="#">Dashboard</a>
+        {{--   <a class="cta-btn" href="#">Dashboard</a>  --}}
 
         </div>
 

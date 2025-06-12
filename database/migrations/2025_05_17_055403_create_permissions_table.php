@@ -20,9 +20,9 @@ return new class extends Migration
         });
 
         DB::table('permissions')->insert([
-            ['name' => 'manage users','description' => 'Administrador de usuarios'],
-            ['name' => 'manage roles','description' => 'Administrador de roles'],
-            ['name' => 'manage permissions','description' => 'Administrador de permisos'],
+            ['name' => 'manage users','description' => 'Gestor de usuarios'],
+            ['name' => 'manage roles','description' => 'Gestor de roles'],
+            ['name' => 'manage permissions','description' => 'Gestor de permisos'],
         ]);
     }
 
