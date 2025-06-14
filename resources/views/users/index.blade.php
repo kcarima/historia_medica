@@ -1,5 +1,4 @@
 <x-app-layout>
-
     @section('contenido')
     <div class="container-fluid py-4">
         <div class="row">
@@ -48,7 +47,7 @@
                                             <a href="{{  route('users.edit', $user) }}"  class="edit-icon" title="Editar"><i class="bi bi-pencil-square"></i></a>
                                             <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                @method('DELETE')
+
                                                 <a class="edit-icon" type="submit" title="Eliminar" onclick="return confirm('¿Estás seguro Que desea Eliminar el usuario?')"><i class="bi bi-eraser"></i></a>
                                             </form>
                                         </td>

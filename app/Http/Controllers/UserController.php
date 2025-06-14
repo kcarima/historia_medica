@@ -10,47 +10,35 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $roles = Role::all(); // Carga la relación role
+        //$roles = Role::all(); // Carga la relación role
         // return view('users.index', compact('users'));
         //$this->authorize('manage users'); // Verifica si el usuario tiene el permiso 'manage users'
         $users = User::with('role')->get();
-        return view('users.index', compact(['users'.'roles']));
+        return view('users.index', compact('users'));
+        //return view('users.index', compact(['users','roles']));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $roles = Role::all(); // Obtén todos los roles
         return view('users.create', compact('roles'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:100',
-            'username' => 'required|string|max:50',
+            'username' => 'required|string|max:50|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role_id' => 'required|exists:roles,id', // Valida que el role_id exista en la tabla roles
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $request->role_id,
-        ]);
+        $request['password'] = bcrypt($request['password']);
+
+        User::create($request);
 
         return redirect()->route('users.index')->with('success', 'Usuario creado exitosamente.');
     }
@@ -78,28 +66,21 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'username' => 'required|string|max:50',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id), // Ignora el email actual del usuario
-            ],
-            'password' => 'nullable|string|min:8|confirmed', // La contraseña es opcional para actualizar
-            'role_id' => 'required|exists:roles,id',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|unique:users,username,'.$user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'password' => 'nullable|min:8|confirmed',
+            'roles_id' => 'required|exists:roles,id'
         ]);
 
-        $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        if ($request->filled('password')) { // Si se proporcionó una nueva contraseña
-            $user->password = Hash::make($request->password);
+        if ($request->filled('password')) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
         }
-        $user->role_id = $request->role_id;
-        $user->save();
+
+        $user->update($validated);
 
         return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
     }

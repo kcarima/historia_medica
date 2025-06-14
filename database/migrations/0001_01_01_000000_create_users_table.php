@@ -3,7 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\BD;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 return new class extends Migration
 {
     /**
@@ -37,12 +39,14 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        DB::table('users')->insert([
+            ['name' => 'Administrador', 'username'=> 'admin', 'email' => 'admin@example.com','password' => Hash::make('123456'),'roles_id' => 1,'created_at' => now(),'updated_at' => now(),],
+            ['name' => 'Médico', 'username'=> 'medico', 'email' => 'medico@example.com','password' => Hash::make('12345678'),'roles_id' => 2,'created_at' => now(),'updated_at' => now()]
+        ]);
     }
-    DB::table('users')->insert([
-        ['name' => 'Administrador', 'username'=> 'admin', 'email' => 'admin@example.com','password' => Hash::make('123456'),'created_at' => now(),'updated_at' => now(),],
-        ['name' => 'Médico', 'username'=> 'medico', 'email' => 'medico@example.com','password' => Hash::make('12345678'),'created_at' => now(),'updated_at' => now()]
-    ]);
-}
+
+
 
     /**
      * Reverse the migrations.

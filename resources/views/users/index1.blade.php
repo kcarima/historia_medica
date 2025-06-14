@@ -1,57 +1,56 @@
 <x-app-layout>
 
     @section('contenido')
-    <div class="container-fluid py-4">
-        <div class="row">
-          <div class="col-12">
-            <div class="card my-4">
-              <div class=" p-0 position-relative mt-n4 mx-3 z-index-2">
-                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                  <h2 class="text-black text-capitalize ps-3">Lista de Usuarios</h2>
-                    @can('create_users')
-                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-border btn-round"><span class="icon">+ </span>Crear Usuario</a>
-                    @endcan
-                </div>
-              </div>
-              <div class="card-body px-0 pb-2">
-                <div class="table-responsive p-0">
-                    <div class="table-header mb-2">
-                        Total de usuarios | {{ $users->count() }} de {{ $users->count() }}
-                    </div>
-                    <table class="table table-striped table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Usuario</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Rol</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role->name ?? 'Sin Rol' }}</td> {{-- Muestra el nombre del rol --}}
-                                    <td>
-                                        <a href="{{ route('users.show', $user) }}" title="Detalle">Ver</a>
-                                        <a href="{{  route('users.edit', $user) }}" title="Editar">Editar</a>
-                                        <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" title="Eliminar" onclick="return confirm('¿Estás seguro Que desea Eliminar el usuario?')">Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                  </table>
-                </div>
-              </div>
+    <div class="container">
+        <h2>Usuarios</h2>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <form method="GET" action="{{ route('users.index') }}" class="form-inline">
+                    <input type="text" name="search" value="{{ request('search') }}" class="form-control mr-2" placeholder="Buscar usuario, nombre o email">
+                    <button type="submit" class="btn btn-primary mr-2">Buscar</button>
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Limpiar</a>
+                </form>
             </div>
-          </div>
+            <div class="col-md-4 text-right">
+                <a href="{{ route('users.create') }}" class="btn btn-success">Nuevo Usuario</a>
+               {{--  <a href="{ { route('users.pdf', request()->only('search')) }}" class="btn btn-outline-danger" target="_blank">Imprimir PDF</a>  --}}
+            </div>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($users as $user)
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->username }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->role->descriction }}</td>
+                    <td>
+                        <a href="{{ route('users.show', $user) }}" class="btn btn-info btn-sm">Ver</a>
+                        <a href="{{ route('users.edit', $user) }}" class="btn btn-primary btn-sm">Editar</a>
+                        <form action="{{ route('users.destroy', $user) }}" method="POST" style="display:inline;">
+                            @csrf @method('DELETE')
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar usuario?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr><td colspan="6">No hay usuarios registrados.</td></tr>
+                @endforelse
+            </tbody>
+        </table>
+        <div>
+            {{ $users->appends(request()->except('page'))->links() }}
         </div>
     </div>
 

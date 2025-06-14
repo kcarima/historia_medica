@@ -12,17 +12,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // Nombre del permiso (ej: create_post, edit_user)
+            $table->string('name')->unique(); // Nombre del rol (ej: Admin, Editor)
             $table->text('description')->nullable();
             $table->timestamps();
         });
 
-        DB::table('permissions')->insert([
-            ['name' => 'manage users','description' => 'Gestor de usuarios'],
-            ['name' => 'manage roles','description' => 'Gestor de roles'],
-            ['name' => 'manage permissions','description' => 'Gestor de permisos'],
+        DB::table('roles')->insert([
+            ['name' => 'admin','description' => 'Administrador'],
+            ['name' => 'medico','description' => 'Médico'],
+            ['name' => 'enfermera','description' => 'Enfermera'],
         ]);
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permissions');
+        Schema::dropIfExists('roles');
     }
 };

@@ -8,59 +8,53 @@ use App\Http\Requests\UpdateRoleRequest;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $roles = Role::paginate(10);
+        return view('roles.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Formulario de creación
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRoleRequest $request)
+    // Almacenar nuevo rol
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|unique:roles|max:255',
+            'description' => 'nullable|string'
+        ]);
+
+        Role::create($validated);
+        return redirect()->route('roles.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Role $role)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Formulario de edición
     public function edit(Role $role)
     {
-        //
+        return view('roles.edit', compact('role'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRoleRequest $request, Role $role)
+    // Actualizar rol
+    public function update(Request $request, Role $role)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255|unique:roles,name,'.$role->id,
+            'description' => 'nullable|string'
+        ]);
+
+        $role->update($validated);
+        return redirect()->route('roles.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Eliminar rol
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->route('roles.index');
     }
+
 }

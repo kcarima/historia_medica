@@ -9,7 +9,7 @@ class CreateHistoriasTable extends Migration
     {
         Schema::create('historias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('paciente_id')->constrained('pacientes')->onDelete('cascade');
+            //$table->foreignId('paciente_id')->constrained('pacientes')->onDelete('cascade');
             $table->dateTime('fecha_atencion');
             $table->string('motivo_consulta', 1000);
             $table->string('diagnostico', 255)->nullable();
@@ -19,7 +19,10 @@ class CreateHistoriasTable extends Migration
             $table->text('evolucion')->nullable();
             $table->text('interconsultas')->nullable();
             $table->text('observaciones')->nullable();
+            $table->string('historia',null);
+             $table->foreign('historia')->references('historia')->on('pacientes');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
